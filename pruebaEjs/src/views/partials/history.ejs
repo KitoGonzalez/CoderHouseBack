@@ -1,0 +1,11 @@
+<% typeof users != 'undefined' ? users : [] %> 
+<% if (users.length>0) { %>
+    <% users.forEach(user => { %>
+        <p>Nombre del Usuario: <%= user.first_name %> </p>
+        <p>Apellido del Usuario:<%= user.last_name %> </p>
+        <p>Edad del Usuario:<%= user.age %> </p>
+    <% }) %>
+<% } else { %>
+    <p>No hay datos para mostrar</p>
+<% } %>
+ 

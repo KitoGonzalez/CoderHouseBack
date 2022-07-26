@@ -1,0 +1,31 @@
+<h1>Formulario EJS - CoderHouse</h1>
+<p>Alumno: Joaquin Gonzalez</p>
+<form id="testForm">
+    <label>Ingresa tu Nombre</label>
+    <input name="first_name">
+    <br>
+    <label>Ingresa tu Apellido</label>
+    <input name="last_name">
+    <br>
+    <label>Ingresa tu Edad</label>
+    <input name="age">
+    <input type="submit">
+</form>
+<p>Usuarios Registrados:</p>
+<%- include('./partials/history', {users}) %> 
+<script>
+    let form  = document.getElementById('testForm');
+    form.addEventListener('submit',evt=>{
+        evt.preventDefault();
+        let data = new FormData(form)
+        let obj = {};
+        data.forEach((value,key)=>obj[key]=value);
+        fetch('/users',{
+            method:'POST',
+            body:JSON.stringify(obj),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+    })
+</script>
